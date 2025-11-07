@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspira Institute - Online Learning</title>
+    <link rel="icon" type="Image/jpg" href="./Photo/photo_2025-10-03_23-03-24.jpg">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-purple: #6a1b9a;
+            --dark-purple: #4a148c;
+            --light-purple: #9c4dcc;
+            --silver: #c0c0c0;
+            --light-silver: #e8e8e8;
+            --dark-silver: #a0a0a0;
+            --white: #ffffff;
+            --dark-text: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            scroll-behavior: smooth;
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+            padding: 15px 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--silver);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--silver) !important;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(106, 27, 154, 0.85), rgba(74, 20, 140, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, #f9f9f9);
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--dark-purple), var(--primary-purple));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(106, 27, 154, 0.4);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--dark-purple);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--silver), var(--primary-purple), var(--silver));
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            height: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--white);
+            border-top: 4px solid var(--primary-purple);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 27, 154, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .values-section {
+            background: linear-gradient(135deg, var(--light-silver), var(--white));
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .values-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--silver), var(--primary-purple), var(--silver));
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid var(--light-silver);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 27, 154, 0.1);
+            border-color: var(--primary-purple);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .value-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-purple);
+        }
+        
+        .team-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .team-card {
+            text-align: center;
+            margin-bottom: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 27, 154, 0.15);
+        }
+        
+        .team-img {
+            height: 250px;
+            background: linear-gradient(135deg, var(--light-silver), var(--silver));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .team-info {
+            padding: 20px;
+        }
+        
+        .team-info h4 {
+            color: var(--dark-purple);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+            color: var(--white);
+            padding: 80px 0;
+        }
+        
+        .contact-section .section-title {
+            color: var(--white);
+        }
+        
+        .contact-section .section-title:after {
+            background: linear-gradient(to right, var(--silver), var(--white), var(--silver));
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--silver);
+            margin-right: 10px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid var(--light-silver);
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.25);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--dark-purple), #2d1155);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--dark-purple), var(--primary-purple));
+            color: var(--silver);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mission-vision {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .mission-card, .vision-card {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            border-top: 4px solid var(--primary-purple);
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            
+            .hero-section {
+                padding: 150px 0 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">ASPIRA INSTITUTE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#values">Our Values</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mission">Mission & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1>Empowering Learners for Modern Success</h1>
+            <p>Aspira Institute provides accessible online education through GED preparation, multi-language courses, and vocational training to help you achieve your goals.</p>
+            <a href="#services" class="btn btn-primary btn-lg">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>GED Preparation</h3>
+                        <p>Comprehensive online courses to help you earn your General Educational Development certificate and open doors to higher education.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Digital Test Service</h3>
+                        <p>Schedule and purchase your desire tests.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Language Courses</h3>
+                        <p>Learn multiple languages with our expert instructors and immersive online curriculum designed for all proficiency levels.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Vocational Training</h3>
+                        <p>Gain practical skills and certifications in high-demand fields to advance your career or start a new one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Values</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="value-title">Aspire</h3>
+                        <p>We inspire learners to dream big and set ambitious goals for their educational and professional journeys.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="value-title">Acquire</h3>
+                        <p>We provide the tools, resources, and guidance needed to gain valuable knowledge and skills.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="value-title">Accomplish</h3>
+                        <p>We celebrate every achievement and support learners in reaching their full potential and realizing their dreams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission" class="mission-vision">
+        <div class="container">
+            <h2 class="section-title">Mission & Vision</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye me-2"></i>Our Mission</h3>
+                        <p>To empower learners through accessible, online GED, multi-language, and vocational training, providing the essential skills for modern success.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="vision-card">
+                        <h3><i class="fas fa-eye me-2"></i>Our Vision</h3>
+                        <p>To become the largest, most comprehensive online learning ecosystem globally, enabling every learner to master any subject they desire and providing a seamless path from high school foundation to successful University application.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <!-- Replace with actual image path -->
+                            <img src="./Photo/photo_2025-11-07_16-41-56.jpg" alt="Phone Myat Paiing" class="img-fluid">
+                        </div>
+                        <div class="team-info">
+                            <h4>Phone Myat Paiing</h4>
+                            <p class="text-muted">ADMIN - Management Team</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <!-- Replace with actual image path -->
+                            <img src="./Photo/photo_2025-11-07_16-42-31.jpg" alt="Kaung Set Paiing" class="img-fluid">
+                        </div>
+                        <div class="team-info">
+                            <h4>Kaung Set Paiing</h4>
+                            <p class="text-muted">ADMIN - Management Team</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <!-- Replace with actual image path -->
+                            <img src="./Photo/photo_2025-11-07_16-43-02.jpg" alt="Aye Nyein Thu" class="img-fluid">
+                        </div>
+                        <div class="team-info">
+                            <h4>Aye Nyein Thu</h4>
+                            <p class="text-muted">ADMIN - Teaching Department</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about our programs or ready to enroll? Reach out to us and our team will be happy to assist you.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-globe contact-icon"></i> Online-based Institute</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> aspirainstitute.org@gmail.com</p>
+                        <p><i class="fas fa-calendar contact-icon"></i> Founded in 2025</p>
+                        <p><i class="fas fa-users contact-icon"></i> Team Size: 9</p>
+                        <a class="btn btn-primary" href="https://tally.so/r/LZ1Mr2">Contact Us About Partnerships</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/phine000999true/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Aspira Institute. All Rights Reserved.</p>
+            <p>Empowering learners through accessible online education.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(74, 20, 140, 0.95)';
+                navbar.style.padding = '10px 0';
+            } else {
+                navbar.style.backgroundColor = '';
+                navbar.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+</html>
